@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'ls -la'
-                sh 'ls -la spring-petclinic/'
+                sh './spring-petclinic/mvnw'
             }
         }
         stage('Test') {
