@@ -9,11 +9,13 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'ls -la'
-                sh 'ls -la .ssh/'
+                sh 'ls -la spring-petclinic/'
             }
         }
         stage('Test') {
             steps {
+                sh 'cd spring-petclinic;
+                    ls -la' 
                 echo 'Testing..'
             }
         }
