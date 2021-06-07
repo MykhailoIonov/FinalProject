@@ -14,8 +14,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd spring-petclinic;
-                    ls -la' 
                 echo 'Testing..'
             }
         }
