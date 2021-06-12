@@ -13,8 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'ls -la'
-                sh 'sudo ./spring_petclinic/mvnw package'
+                sh 'sudo chmod +x spring_petclinic/mvnw'
+                sh './spring_petclinic/mvnw package'
             }
         }
         stage('Test') {
