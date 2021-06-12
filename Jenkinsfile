@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'ls -la'
-                sh './spring-petclinic/mvnw'
+                pwd './spring-petclinic/mvnw'
             }
         }
         stage('Test') {
