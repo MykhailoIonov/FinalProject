@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'ls -la'
-                sh 'pwd'
+                sh './spring_petclinic/mvnw package'
             }
         }
         stage('Test') {
