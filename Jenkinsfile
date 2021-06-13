@@ -17,22 +17,16 @@ pipeline {
                 sudo chmod +x mvnw
                 sudo ./mvnw package
                 '''
+                stash name: "artifact", includes: "spring_petclinic/target/*.jar"
             }
         }
-        stage('upload') {
-           steps {
-              script { 
-                 def server = Artifactory.server 'node_main'
-                 def uploadSpec = """{
-                    "files": [{
-                       "pattern": "/home/ubuntu/test/spring-petclinic/target/*.jar",
-                       "target": "/home/ubuntu"
-                    }]
-                 }"""
-
-                 server.upload(uploadSpec) 
-               }
-            }
+        stage ('unstash') {
+            node { label  'node_prod' }
+                 steps {
+                    script {
+                        unstash name: "artifact"  // runs in $WORKSPACE, creates $WORKSPACE/myfile.txt
+                    }
+                 }
         }
         stage('Test') {
             steps {
