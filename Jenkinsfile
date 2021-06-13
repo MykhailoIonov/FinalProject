@@ -20,22 +20,12 @@ pipeline {
                 stash name: "artifact", includes: "spring_petclinic/target/*.jar"
             }
         }
-        stage ('unstash') {
+        stage ('Delivery') {
                  steps {
-                    node('node_prod'){
+                    node('node_artifactory'){
                         unstash name: "artifact"  // runs in $WORKSPACE, creates $WORKSPACE/myfile.txt
                     }
                  }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
         }
     }
 }
