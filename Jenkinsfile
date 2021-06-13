@@ -19,7 +19,6 @@ pipeline {
                 '''
             }
         }
-        stages {
         stage('upload') {
            steps {
               script { 
@@ -35,7 +34,6 @@ pipeline {
                }
             }
         }
-    } 
         stage('Test') {
             steps {
                 echo 'Testing..'
