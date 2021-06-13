@@ -1,4 +1,9 @@
 pipeline {
+    agent {
+        node {
+            label 'node_main'
+        }
+    }
     stages {
         stage('Deploy artifact') {
             steps {
