@@ -21,9 +21,8 @@ pipeline {
             }
         }
         stage ('unstash') {
-            node { label  'node_prod' }
                  steps {
-                    script {
+                    node('node_prod'){
                         unstash name: "artifact"  // runs in $WORKSPACE, creates $WORKSPACE/myfile.txt
                     }
                  }
