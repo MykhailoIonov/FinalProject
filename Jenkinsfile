@@ -23,7 +23,7 @@ pipeline {
         stage ('Delivery artifactory') {
                  steps {
                     node('node_artifactory'){
-                        unstash name: "artifact"  // runs in $WORKSPACE, creates $WORKSPACE/myfile.txt
+                        unstash name: "artifact" 
                     }
                  }
         }
