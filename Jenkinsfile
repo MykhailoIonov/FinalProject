@@ -26,7 +26,7 @@ pipeline {
                  def server = Artifactory.server 'node_main'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "/home/ubuntu/test/spring-petclinic/target/*jar",
+                       "pattern": "/home/ubuntu/test/spring-petclinic/target/*.jar",
                        "target": "/home/ubuntu"
                     }]
                  }"""
