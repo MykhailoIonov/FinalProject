@@ -12,12 +12,12 @@ pipeline {
                 }
             }
         }
-        stage ('Start application') {
-                 steps {
-                    node('node_prod'){
-                        unstash name: "artifact"
-                    }
-                 }
+        stage('Start application') {
+            steps {
+                node('node_prod'){
+                    unstash name: "artifact"
+                }
+            }
         }
     }
 }
