@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        node {
+            label 'node_main'
+        }
+    }
+    stages {
+        stage('Deploy artifact') {
+            steps {
+                node('node_artifactory')
+                stash name: "artifact", includes: "/home/ubuntu/workspace/Project_build/spring_petclinic/target*.jar"
+            }
+        }
+        stage ('Start application') {
+                 steps {
+                    node('node_prod'){
+                        unstash name: "artifact"
+                    }
+                 }
+        }
+    }
+}
