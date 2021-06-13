@@ -12,6 +12,7 @@ pipeline {
                    ls -la 
                    pwd
                    touch q
+                   cp /home/ubuntu/workspace/Project_build/spring_petclinic/target/*.jar .
                    '''
                    stash name: "artifact", includes: "q"
                 }
