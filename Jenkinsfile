@@ -16,8 +16,8 @@ pipeline {
                 sh '''cd spring_petclinic
                 ls -la
                 pwd
+                sudo ./mvnw package
                 '''
-                sh 'sudo ./mvnw package'
             }
         }
         stage('Test') {
