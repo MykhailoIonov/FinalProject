@@ -17,6 +17,7 @@ pipeline {
             steps {
                 node('node_prod'){
                     unstash name: "artifact"
+                    sh 'sudo systemctl start spring-petclinic'
                 }
             }
         }
