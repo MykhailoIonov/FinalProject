@@ -8,14 +8,18 @@ pipeline {
         stage('Deploy artifact') {
             steps {
                 node('node_artifactory'){
-                    stash name: "Artifact", includes: "/home/ubuntu/workspace/Project_build/spring_petclinic/target/*.jar"
+                   sh '''
+                   ls -la 
+                   pwd
+                   '''
+                   stash name: "artifact", includes: "/home/ubuntu/workspace/Project_build/spring_petclinic/target/*.jar"
                 }
             }
         }
         stage('Start application') {
             steps {
                 node('node_prod'){
-                    unstash name: "Artifact"
+                    unstash name: "artifact"
                 }
             }
         }
