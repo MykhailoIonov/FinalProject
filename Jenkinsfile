@@ -19,6 +19,23 @@ pipeline {
                 '''
             }
         }
+        stages {
+        stage('upload') {
+           steps {
+              script { 
+                 def server = Artifactory.server 'node_main'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "/home/ubuntu/test/spring-petclinic/target/*jar",
+                       "target": "/home/ubuntu"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+               }
+            }
+        }
+    } 
         stage('Test') {
             steps {
                 echo 'Testing..'
