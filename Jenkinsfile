@@ -12,10 +12,9 @@ pipeline {
        }
         stage('Build') {
             steps {
-                sh 'sudo chmod +x spring_petclinic/mvnw'
-                sh '''cd spring_petclinic
-                ls -la
-                pwd
+                sh '''
+                cd spring_petclinic
+                sudo chmod +x mvnw
                 sudo ./mvnw package
                 '''
             }
