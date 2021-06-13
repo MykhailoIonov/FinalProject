@@ -14,7 +14,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'sudo chmod +x spring_petclinic/mvnw'
-                sh 'sudo ./spring_petclinic/mvnw package'
+                sh 'cd spring_petclinic'
+                sh 'sudo ./mvnw package'
             }
         }
         stage('Test') {
